@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place aux Robots - Learn Makeblock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        header {
+            background: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #5a6c7d;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .hero {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #5a6c7d;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .categories {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .category-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .category-card p {
+            color: #5a6c7d;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .quick-links {
+            max-width: 1200px;
+            margin: 3rem auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .quick-links h3 {
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .quick-link {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #3498db;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+            border: 1px solid #e1e8ed;
+        }
+
+        .quick-link:hover {
+            background: #f8f9fa;
+        }
+
+        .quick-link::before {
+            content: "→";
+            margin-right: 0.8rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            color: #5a6c7d;
+            border-top: 1px solid #e1e8ed;
+            margin-top: 4rem;
+        }
+
+        .note {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .note p {
+            color: #2c3e50;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🤖 Place aux Robots</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="tutorials/tutorials.html">Tutorials</a>
+                <a href="forum/forum.html">Forum</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h2>Learn Makeblock, Build Amazing Robots</h2>
+            <p>Hey there! Welcome to the unofficial guide for Place aux Robots participants. This site was made by a student, for students - to help you figure out all the Makeblock stuff without pulling your hair out.</p>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search for a sensor, motor, or block... (coming soon!)" id="searchInput">
+        </div>
+
+        <div class="note">
+            <p><strong>Quick tip:</strong> New to Makeblock? Start with the "Getting Started" section below. Already know the basics? Jump straight to the device tutorials!</p>
+        </div>
+
+        <div class="categories">
+            <a href="categorys/sensors.html" class="category-card">
+                <div class="category-icon">📡</div>
+                <h3>Sensors</h3>
+                <p>Ultrasonic sensors, line followers, light sensors, and more. Learn how to make your robot see and sense the world.</p>
+            </a>
+
+            <a href="categorys/motors.html" class="category-card">
+                <div class="category-icon">⚙️</div>
+                <h3>Motors & Movement</h3>
+                <p>DC motors, servo motors, encoders. Get your robot moving smoothly and precisely.</p>
+            </a>
+
+            <a href="categorys/controlers.html" class="category-card">
+                <div class="category-icon">🎮</div>
+                <h3>Controllers & Boards</h3>
+                <p>mCore, Orion, CyberPi. Understanding your robot's brain and how to program it.</p>
+            </a>
+
+            <a href="categorys/advanced.html" class="category-card">
+                <div class="category-icon">🚀</div>
+                <h3>Advanced Topics</h3>
+                <p>Bluetooth communication, custom functions, debugging tips, and competition strategies.</p>
+            </a>
+        </div>
+        <!-- @TODO  -->
+        <div class="quick-links">
+            <h3>Getting Started</h3>
+            <div class="links-grid">
+                <a href="tutorials/basic/setup.html" class="quick-link">Setting up mBlock software</a>
+                <a href="tutorials/basic/extensions.html" class="quick-link">Installing extensions</a>
+                <a href="tutorials/basic/troubleshooting.html" class="quick-link">Common problems & fixes</a>
+                <a href="tutorials/basic/common-issues.html" class="quick-link">Common problems & fixes</a>
+            </div>
+        </div>
+
+        <div class="quick-links">
+            <h3>Popular Tutorials</h3>
+            <div class="links-grid">
+                <a href="tutorials/projects/servos.html" class="quick-link">Using servos</a>
+                <a href="tutorial/projects/stepper-motors.html" class="quick-link">Using stepper motors</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Made with ☕ by a student for students | Not officially affiliated with Makeblock or Place aux Robots</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Have suggestions? Found a mistake? Let me know in the <a href="forum/forum.html" style="color: #3498db;">forum</a>!</p>
+    </footer>
+
+    <script>
+        // Simple search functionality (you can expand this later)
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                alert('Search feature coming soon! For now, browse the categories below.');
+            }
+        });
+    </script>
+</body>
+</html>

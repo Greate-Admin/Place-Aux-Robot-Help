@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[TUTORIAL TITLE] - Place aux Robots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        header {
+            background: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #5a6c7d;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .breadcrumb {
+            max-width: 900px;
+            margin: 1.5rem auto 0;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            color: #5a6c7d;
+        }
+
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .tutorial-header {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .tutorial-header h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #5a6c7d;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        .tutorial-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .what-you-learn {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem 2rem;
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .what-you-learn h3 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .what-you-learn ul {
+            margin-left: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .what-you-learn li {
+            margin: 0.4rem 0;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .content-inner {
+            padding: 2.5rem;
+        }
+
+        .content h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e1e8ed;
+        }
+
+        .content h3:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .content h4 {
+            color: #34495e;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        .content p {
+            margin: 1rem 0;
+            color: #2c3e50;
+        }
+
+        .step {
+            margin: 2rem 0;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3498db;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .step h4 {
+            margin-top: 0;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #e1e8ed;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .tip, .warning, .note {
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+
+        .tip {
+            background: #f0fdf4;
+            border-color: #22c55e;
+        }
+
+        .tip::before {
+            content: "💡 Tip: ";
+            font-weight: bold;
+            color: #22c55e;
+        }
+
+        .warning {
+            background: #fef3e7;
+            border-color: #f39c12;
+        }
+
+        .warning::before {
+            content: "⚠️ Watch out: ";
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .note {
+            background: #f8f9fa;
+            border-color: #5a6c7d;
+        }
+
+        .note::before {
+            content: "📝 Note: ";
+            font-weight: bold;
+            color: #5a6c7d;
+        }
+
+        .image-placeholder {
+            background: #e1e8ed;
+            border: 2px dashed #a0aec0;
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            color: #5a6c7d;
+            margin: 1.5rem 0;
+        }
+
+        .common-issues {
+            background: #fff5f5;
+            border: 1px solid #feb2b2;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .common-issues h4 {
+            color: #c53030;
+            margin-top: 0;
+        }
+
+        .common-issues ul {
+            margin-left: 1.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .common-issues li {
+            margin: 0.5rem 0;
+        }
+
+        .next-steps {
+            max-width: 900px;
+            margin: 2rem auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .next-steps h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .next-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .next-link {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #3498db;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+            border: 1px solid #e1e8ed;
+        }
+
+        .next-link:hover {
+            background: #f8f9fa;
+        }
+
+        .next-link::before {
+            content: "→";
+            margin-right: 0.8rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            color: #5a6c7d;
+            border-top: 1px solid #e1e8ed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🤖 Place aux Robots</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="forum.html">Forum</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> / <a href="category-sensors.html">Sensors</a> / Using the Ultrasonic Sensor
+    </div>
+
+    <div class="tutorial-header">
+        <h2>Using the Ultrasonic Sensor</h2>
+        <div class="tutorial-meta">
+            <span>⏱️ ~15 minutes</span>
+            <span>📊 Beginner</span>
+            <span>🔧 mCore required</span>
+        </div>
+    </div>
+
+    <div class="what-you-learn">
+        <h3>What you'll learn</h3>
+        <ul>
+            <li>How to connect the ultrasonic sensor to your mCore board</li>
+            <li>Which extension to use and how to add it</li>
+            <li>Reading distance values in your code</li>
+            <li>Making your robot avoid obstacles</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="content-inner">
+            <h3>What is an Ultrasonic Sensor?</h3>
+            <p>The ultrasonic sensor is basically your robot's eyes. It shoots out sound waves (that humans can't hear) and measures how long they take to bounce back. From that, it figures out how far away things are.</p>
+            
+            <p>Think of it like a bat's echolocation, but for robots. Pretty cool, right?</p>
+
+            <div class="tip">The sensor works best between 3cm and 400cm. Any closer or farther and it might give you weird readings.</div>
+
+            <h3>What You Need</h3>
+            <ul>
+                <li>Your robot with mCore board</li>
+                <li>Ultrasonic sensor (the blue thing with two silver circles)</li>
+                <li>A cable to connect it (usually comes with the sensor)</li>
+                <li>mBlock software installed on your computer</li>
+            </ul>
+
+            <h3>Step-by-Step Setup</h3>
+
+            <div class="step" data-step="1">
+                <h4>Connect the Sensor</h4>
+                <p>Grab your ultrasonic sensor and look for the ports on your mCore board. They're labeled and usually numbered. Connect your sensor to Port 3 or 4 - these are the ones that work with the ultrasonic sensor.</p>
+                <div class="image-placeholder">
+                    [Add image: Ultrasonic sensor connected to mCore Port 3]
+                </div>
+                <div class="warning">Make sure your robot is turned OFF when plugging things in. It's just safer that way.</div>
+            </div>
+
+            <div class="step" data-step="2">
+                <h4>Open mBlock and Add the Extension</h4>
+                <p>Fire up mBlock on your computer. Look for the "Extensions" button at the bottom left - it looks like a puzzle piece or plus sign.</p>
+                <p>In the search bar, type "mBot" or "ultrasonic" and add the mBot extension. This gives you all the blocks you need to work with the sensor.</p>
+                <div class="image-placeholder">
+                    [Add image: Extensions menu in mBlock with mBot selected]
+                </div>
+            </div>
+
+            <div class="step" data-step="3">
+                <h4>Find the Ultrasonic Block</h4>
+                <p>Once the extension is loaded, look in the blocks panel on the left. Under the "Sensors" category (usually blue or purple), you'll find a block that says something like:</p>
+                <div class="code-block">
+                    ultrasonic sensor [port] distance
+                </div>
+                <p>This block returns a number - the distance in centimeters to whatever's in front of the sensor.</p>
+            </div>
+
+            <div class="step" data-step="4">
+                <h4>Write Your First Program</h4>
+                <p>Let's make something simple - a program that displays the distance on your screen. Here's what you need:</p>
+                <div class="code-block">
+when green flag clicked
+forever
+    say (ultrasonic sensor [port 3] distance) for (1) seconds
+                </div>
+                <p>When you run this, your sprite will constantly tell you how far away the nearest object is. Wave your hand in front of the sensor and watch the numbers change!</p>
+                <div class="tip">Not seeing anything? Make sure you selected the right port number in the block (should match where you plugged it in).</div>
+            </div>
+
+            <h3>Making Your Robot Avoid Obstacles</h3>
+            <p>Okay, now for the fun part - let's make your robot actually DO something with this sensor. Here's a basic obstacle avoidance setup:</p>
+
+            <div class="code-block">
+when green flag clicked
+forever
+    if (ultrasonic sensor [port 3] distance) < [20] then
+        move backward at speed [100] for [0.5] seconds
+        turn right [90] degrees
+    else
+        move forward at speed [150]
+                </div>
+
+            <p>What this does: The robot moves forward normally, but if it gets within 20cm of something, it backs up and turns right to avoid it. Simple but effective!</p>
+
+            <div class="note">Feel free to play with those numbers. Try different distances, different speeds, different turn angles. See what works best for your robot and your competition arena.</div>
+
+            <h3>Common Issues & How to Fix Them</h3>
+
+            <div class="common-issues">
+                <h4>Sensor not working / always returns 0 or 400</h4>
+                <ul>
+                    <li><strong>Check your connections</strong> - Is the cable plugged in all the way?</li>
+                    <li><strong>Port number</strong> - Make sure the port in your code matches the physical port</li>
+                    <li><strong>Try a different port</strong> - Sometimes ports can be finicky</li>
+                </ul>
+            </div>
+
+            <div class="common-issues">
+                <h4>Getting weird/jumpy readings</h4>
+                <ul>
+                    <li><strong>Add a small delay</strong> - Put a "wait 0.1 seconds" in your loop</li>
+                    <li><strong>Average multiple readings</strong> - Take 3 measurements and use the middle value</li>
+                    <li><strong>Check for obstacles</strong> - Loose wires or parts might be blocking the sensor</li>
+                </ul>
+            </div>
+
+            <h3>Tips from Experience</h3>
+            <p>After using these sensors in a bunch of competitions, here's what I've learned:</p>
+            <ul>
+                <li>The sensor has a cone-shaped detection area. It doesn't just see straight ahead - it sees a bit to the sides too. Keep that in mind when navigating tight spaces.</li>
+                <li>Shiny or angled surfaces can mess with the readings. The sound waves bounce off at weird angles.</li>
+                <li>Soft materials (like fabric or foam) absorb the sound waves. Your robot might think there's nothing there!</li>
+                <li>In competitions, test your robot on the actual arena surface if you can. Different floors can affect the sensor's accuracy.</li>
+            </ul>
+
+            <div class="tip">Want to get fancy? You can use two ultrasonic sensors (one on each side) to make your robot follow walls or navigate corridors. Just need two ports!</div>
+        </div>
+    </div>
+
+    <div class="next-steps">
+        <h3>What's Next?</h3>
+        <div class="next-links">
+            <a href="tutorial-line-follower.html" class="next-link">Try the Line Follower Sensor</a>
+            <a href="tutorial-motor-control.html" class="next-link">Learn Better Motor Control</a>
+            <a href="forum.html" class="next-link">Ask Questions in the Forum</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with ☕ by a student for students | Not officially affiliated with Makeblock or Place aux Robots</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Found this helpful? Got stuck somewhere? <a href="forum.html" style="color: #3498db;">Let me know!</a></p>
+    </footer>
+</body>
+</html>
