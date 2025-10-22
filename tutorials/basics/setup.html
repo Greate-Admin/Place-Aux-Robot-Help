@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installing Makeblock - Place aux Robots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        header {
+            background: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #5a6c7d;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .lang-toggle {
+            padding: 0.6rem 1rem;
+            background: #f0f0f0;
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #5a6c7d;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            background: #e8e8e8;
+        }
+
+        .breadcrumb {
+            max-width: 900px;
+            margin: 1.5rem auto 0;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            color: #5a6c7d;
+        }
+
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .tutorial-header {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .tutorial-header h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #5a6c7d;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        .tutorial-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .what-you-learn {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem 2rem;
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .what-you-learn h3 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .what-you-learn ul {
+            margin-left: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .what-you-learn li {
+            margin: 0.4rem 0;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .content-inner {
+            padding: 2.5rem;
+        }
+
+        .content h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e1e8ed;
+        }
+
+        .content h3:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .content h4 {
+            color: #34495e;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        .content p {
+            margin: 1rem 0;
+            color: #2c3e50;
+        }
+
+        .step {
+            margin: 2rem 0;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3498db;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .step h4 {
+            margin-top: 0;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #e1e8ed;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .tip, .warning, .note {
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+
+        .tip {
+            background: #f0fdf4;
+            border-color: #22c55e;
+        }
+
+        .warning {
+            background: #fef3e7;
+            border-color: #f39c12;
+        }
+
+        .note {
+            background: #f8f9fa;
+            border-color: #5a6c7d;
+        }
+
+        .image-placeholder {
+            background: #e1e8ed;
+            border: 2px dashed #a0aec0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            color: #5a6c7d;
+            margin: 1.5rem 0;
+        }
+
+        .common-issues {
+            background: #fff5f5;
+            border: 1px solid #feb2b2;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .common-issues h4 {
+            color: #c53030;
+            margin-top: 0;
+        }
+
+        .common-issues ul {
+            margin-left: 1.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .common-issues li {
+            margin: 0.5rem 0;
+        }
+
+        .next-steps {
+            max-width: 900px;
+            margin: 2rem auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .next-steps h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .next-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .next-link {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #3498db;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+            border: 1px solid #e1e8ed;
+        }
+
+        .next-link:hover {
+            background: #f8f9fa;
+        }
+
+        .next-link::before {
+            content: "→";
+            margin-right: 0.8rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            color: #5a6c7d;
+            border-top: 1px solid #e1e8ed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🤖 Place aux Robots</h1>
+            <nav>
+                <a href="../../index.html" data-en="Home" data-fr="Accueil">Accueil</a>
+                <a href="../tutorials.html" data-en="Tutorials" data-fr="Tutoriels">Tutoriels</a>
+                <a href="../../forum/forum.html" data-en="Forum" data-fr="Forum">Forum</a>
+                <button class="lang-toggle" id="langToggle">EN</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="../../index.html" data-en="Home" data-fr="Accueil">Accueil</a> / <a href="../../categorys/software.html" data-en="Software" data-fr="Logiciel">Logiciel</a> / <span data-en="Installing Makeblock" data-fr="Installation de Makeblock">Installation de Makeblock</span>
+    </div>
+
+    <div class="tutorial-header">
+        <h2 data-en="Installing Makeblock Software" data-fr="Installation du logiciel Makeblock">Installation du logiciel Makeblock</h2>
+        <div class="tutorial-meta">
+            <span>⏱️~10 minutes</span>
+            <span>📊 <span data-en="Beginner" data-fr="Débutant">Débutant</span></span>
+        </div>
+    </div>
+
+    <div class="what-you-learn">
+        <h3 data-en="What you'll learn" data-fr="Ce que vous apprendrez">Ce que vous apprendrez</h3>
+        <ul>
+            <li data-en="How to download and install mBlock software" data-fr="Comment télécharger et installer le logiciel mBlock">Comment télécharger et installer le logiciel mBlock</li>
+            <li data-en="System requirements for your computer" data-fr="Configuration système requise pour votre ordinateur">Configuration système requise pour votre ordinateur</li>
+            <li data-en="First-time setup and configuration" data-fr="Configuration initiale">Configuration initiale</li>
+            <!--<li data-en="Connecting your robot to the software" data-fr="Connexion de votre robot au logiciel">Connexion de votre robot au logiciel</li>     not for here-->
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="content-inner">
+            <h3 data-en="What is mBlock?" data-fr="Qu'est-ce que mBlock?">Qu'est-ce que mBlock?</h3>
+            <p data-en="mBlock is the programming software you'll use to control your Makeblock robot. It's based on Scratch, so if you've used Scratch before, you'll feel right at home. You drag and drop code blocks to create programs - no typing complicated code required!" data-fr="mBlock est le logiciel de programmation que vous utiliserez pour contrôler votre robot Makeblock. Il est basé sur Scratch, donc si vous avez déjà utilisé Scratch, vous vous sentirez comme chez vous. Vous glissez-déposez des blocs de code pour créer des programmes - aucun code compliqué à taper!">mBlock est le logiciel de programmation que vous utiliserez pour contrôler votre robot Makeblock. Il est basé sur Scratch, donc si vous avez déjà utilisé Scratch, vous vous sentirez comme chez vous. Vous glissez-déposez des blocs de code pour créer des programmes - aucun code compliqué à taper!</p>
+            
+            <p data-en="The best part? It works on Windows, Mac, and even Chromebooks (web version). So pretty much any computer you have will work." data-fr="Le meilleur? Il fonctionne sur Windows, Mac et même les Chromebooks (version web). Donc pratiquement n'importe quel ordinateur que vous avez fonctionnera.">Le meilleur? Il fonctionne sur Windows, Mac et même les Chromebooks (version web). Donc pratiquement n'importe quel ordinateur que vous avez fonctionnera.</p>
+
+            <div class="tip"><span class="tip-label"></span><span class="tip-content" data-en="If you're using a school computer, check with your teacher first - you might need admin permissions to install software." data-fr="Si vous utilisez un ordinateur de l'école, vérifiez d'abord avec votre enseignant - vous pourriez avoir besoin des permissions d'administrateur pour installer le logiciel.">Si vous utilisez un ordinateur de l'école, vérifiez d'abord avec votre enseignant - vous pourriez avoir besoin des permissions d'administrateur pour installer le logiciel.</span></div>
+
+            <h3 data-en="System Requirements" data-fr="Configuration système requise">Configuration système requise</h3>
+            <p data-en="Before we download, make sure your computer meets these requirements:" data-fr="Avant de télécharger, assurez-vous que votre ordinateur répond à ces exigences:">Avant de télécharger, assurez-vous que votre ordinateur répond à ces exigences:</p>
+            <ul>
+                <li data-en="Windows 7 or newer / macOS 10.10 or newer" data-fr="Windows 7 ou plus récent / macOS 10.10 ou plus récent">Windows 7 ou plus récent / macOS 10.10 ou plus récent</li>
+                <li data-en="At least 2GB of RAM (4GB recommended)" data-fr="Au moins 2 Go de RAM (4 Go recommandés)">Au moins 2 Go de RAM (4 Go recommandés)</li>
+                <li data-en="500MB of free hard drive space" data-fr="500 Mo d'espace libre sur le disque dur">500 Mo d'espace libre sur le disque dur</li>
+                <li data-en="USB port (to connect your robot)" data-fr="Port USB (pour connecter votre robot)">Port USB (pour connecter votre robot)</li>
+            </ul>
+
+            <h3 data-en="Step-by-Step Installation" data-fr="Installation étape par étape">Installation étape par étape</h3>
+
+            <div class="step" data-step="1">
+    <h4 data-en="Download mBlock" data-fr="Télécharger mBlock">Télécharger mBlock</h4>
+    <p data-en="Head over to the official Makeblock website: mblock.makeblock.com" data-fr="Rendez-vous sur le site officiel de Makeblock: mblock.makeblock.com">
+        Rendez-vous sur le site officiel de Makeblock: <a href="https://mblock.makeblock.com/en/download/">mblock.makeblock.com</a>
+    </p>
+    <p data-en="Click the big 'Download' button. The website should automatically detect your operating system (Windows/Mac) and give you the right version." data-fr="Cliquez sur le gros bouton « Télécharger ». Le site Web devrait automatiquement détecter votre système d'exploitation (Windows/Mac) et vous donner la bonne version.">
+        Cliquez sur le gros bouton <a href="https://www.mblock.cc/en-us/download/" target="_blank" rel="noopener noreferrer">« Télécharger »</a>. Le site Web devrait automatiquement détecter votre système d'exploitation (Windows/Mac) et vous donner la bonne version.
+    </p>
+    <div class="image-placeholder">
+        <img src="images/mblock-download-page.png" alt="mBlock download page screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+    </div>
+</div>
+
+
+            <div class="step" data-step="2">
+                <h4 data-en="Run the Installer" data-fr="Exécuter l'installateur">Exécuter l'installateur</h4>
+                <p data-en="Once the download finishes (it's about 200MB, so might take a few minutes), find the installer file in your Downloads folder and double-click it." data-fr="Une fois le téléchargement terminé (environ 200 Mo, donc cela peut prendre quelques minutes), trouvez le fichier d'installation dans votre dossier Téléchargements et double-cliquez dessus.">Une fois le téléchargement terminé (environ 200 Mo, donc cela peut prendre quelques minutes), trouvez le fichier d'installation dans votre dossier Téléchargements et double-cliquez dessus.</p>
+                <div class="image-placeholder" data-en="[Add screenshot: Installer file icon]" data-fr="[Ajouter capture d'écran: icône du fichier d'installation]">
+                    [Ajouter capture d'écran: icône du fichier d'installation]
+                </div>
+                <div class="warning"><span class="warning-label"></span><span class="warning-content" data-en="On Mac, you might get a security warning. Just go to System Preferences > Security & Privacy and click 'Open Anyway'." data-fr="Sur Mac, vous pourriez recevoir un avertissement de sécurité. Allez simplement dans Préférences Système > Sécurité et confidentialité et cliquez sur « Ouvrir quand même ».">Sur Mac, vous pourriez recevoir un avertissement de sécurité. Allez simplement dans Préférences Système > Sécurité et confidentialité et cliquez sur « Ouvrir quand même ».</span></div>
+            </div>
+
+            <div class="step" data-step="3">
+                <h4 data-en="Follow the Installation Wizard" data-fr="Suivre l'assistant d'installation">Suivre l'assistant d'installation</h4>
+                <p data-en="The installer will walk you through the process. Just keep clicking 'Next' and accept the default settings - they're perfectly fine for what we need." data-fr="L'installateur vous guidera tout au long du processus. Continuez simplement à cliquer sur « Suivant » et acceptez les paramètres par défaut - ils sont parfaitement bien pour ce dont nous avons besoin.">L'installateur vous guidera tout au long du processus. Continuez simplement à cliquer sur « Suivant » et acceptez les paramètres par défaut - ils sont parfaitement bien pour ce dont nous avons besoin.</p>
+                <div class="image-placeholder" data-en="[Add screenshot: Installation wizard steps]" data-fr="[Ajouter capture d'écran: étapes de l'assistant d'installation]">
+                    [Ajouter capture d'écran: étapes de l'assistant d'installation]
+                </div>
+                <div class="note"><span class="note-label"></span><span class="note-content" data-en="The installation might take 3-5 minutes. Perfect time to grab a snack!" data-fr="L'installation peut prendre 3 à 5 minutes. Moment parfait pour prendre une collation!">L'installation peut prendre 3 à 5 minutes. Moment parfait pour prendre une collation!</span></div>
+            </div>
+
+            <div class="step" data-step="4">
+                <h4 data-en="First Launch & Setup" data-fr="Premier lancement et configuration">Premier lancement et configuration</h4>
+                <p data-en="When you open mBlock for the first time, you'll see a welcome screen. Choose your language (French or English) and select 'Device' mode - this is what we use for robots." data-fr="Lorsque vous ouvrez mBlock pour la première fois, vous verrez un écran de bienvenue. Choisissez votre langue (français ou anglais) et sélectionnez le mode « Appareil » - c'est ce que nous utilisons pour les robots.">Lorsque vous ouvrez mBlock pour la première fois, vous verrez un écran de bienvenue. Choisissez votre langue (français ou anglais) et sélectionnez le mode « Appareil » - c'est ce que nous utilisons pour les robots.</p>
+                <div class="image-placeholder" data-en="[Add screenshot: mBlock welcome screen]" data-fr="[Ajouter capture d'écran: écran de bienvenue mBlock]">
+                    [Ajouter capture d'écran: écran de bienvenue mBlock]
+                </div>
+            </div>
+
+            <div class="step" data-step="5">
+                <h4 data-en="Connect Your Robot" data-fr="Connecter votre robot">Connecter votre robot</h4>
+                <p data-en="Plug your robot into your computer using the USB cable. Click 'Connect' in the top menu, then select your device (like mBot or mCore). You should see a green checkmark when it's connected successfully!" data-fr="Branchez votre robot sur votre ordinateur à l'aide du câble USB. Cliquez sur « Connecter » dans le menu du haut, puis sélectionnez votre appareil (comme mBot ou mCore). Vous devriez voir une coche verte lorsqu'il est connecté avec succès!">Branchez votre robot sur votre ordinateur à l'aide du câble USB. Cliquez sur « Connecter » dans le menu du haut, puis sélectionnez votre appareil (comme mBot ou mCore). Vous devriez voir une coche verte lorsqu'il est connecté avec succès!</p>
+                <div class="image-placeholder" data-en="[Add screenshot: Connection menu with devices]" data-fr="[Ajouter capture d'écran: menu de connexion avec appareils]">
+                    [Ajouter capture d'écran: menu de connexion avec appareils]
+                </div>
+                <div class="tip"><span class="tip-label"></span><span class="tip-content" data-en="Make sure your robot is turned ON! It's easy to forget but it won't connect if it's off." data-fr="Assurez-vous que votre robot est ALLUMÉ! C'est facile à oublier mais il ne se connectera pas s'il est éteint.">Assurez-vous que votre robot est ALLUMÉ! C'est facile à oublier mais il ne se connectera pas s'il est éteint.</span></div>
+            </div>
+
+            <h3 data-en="Testing Your Setup" data-fr="Tester votre configuration">Tester votre configuration</h3>
+            <p data-en="Let's make sure everything works! Try this super simple program:" data-fr="Assurons-nous que tout fonctionne! Essayez ce programme super simple:">Assurons-nous que tout fonctionne! Essayez ce programme super simple:</p>
+
+            <div class="code-block">
+when green flag clicked
+    play note (C4) for (0.5) beats
+            </div>
+
+            <p data-en="Click the green flag to run it. If you hear a beep from your robot, congratulations! Everything is set up correctly." data-fr="Cliquez sur le drapeau vert pour l'exécuter. Si vous entendez un bip de votre robot, félicitations! Tout est configuré correctement.">Cliquez sur le drapeau vert pour l'exécuter. Si vous entendez un bip de votre robot, félicitations! Tout est configuré correctement.</p>
+
+            <h3 data-en="Common Issues & Fixes" data-fr="Problèmes courants et solutions">Problèmes courants et solutions</h3>
+
+            <div class="common-issues">
+                <h4 data-en="Software won't install" data-fr="Le logiciel ne s'installe pas">Le logiciel ne s'installe pas</h4>
+                <ul>
+                    <li><strong data-en="Admin rights" data-fr="Droits d'administrateur">Droits d'administrateur</strong> - <span data-en="You might need administrator permissions on your computer" data-fr="Vous pourriez avoir besoin de permissions d'administrateur sur votre ordinateur">Vous pourriez avoir besoin de permissions d'administrateur sur votre ordinateur</span></li>
+                    <li><strong data-en="Antivirus" data-fr="Antivirus">Antivirus</strong> - <span data-en="Temporarily disable antivirus software during installation" data-fr="Désactivez temporairement le logiciel antivirus pendant l'installation">Désactivez temporairement le logiciel antivirus pendant l'installation</span></li>
+                    <li><strong data-en="Space" data-fr="Espace">Espace</strong> - <span data-en="Make sure you have at least 500MB free on your hard drive" data-fr="Assurez-vous d'avoir au moins 500 Mo de libre sur votre disque dur">Assurez-vous d'avoir au moins 500 Mo de libre sur votre disque dur</span></li>
+                </ul>
+            </div>
+
+            <h3 data-en="Alternative: Web Version" data-fr="Alternative: Version web">Alternative: Version web</h3>
+            <p data-en="Can't install the desktop version? No problem! You can use mBlock online at ide.mblock.cc. It works in any web browser and doesn't require installation. The only downside is you'll need an internet connection every time you want to code." data-fr="Vous ne pouvez pas installer la version de bureau? Pas de problème! Vous pouvez utiliser mBlock en ligne à ide.mblock.cc. Il fonctionne dans n'importe quel navigateur web et ne nécessite pas d'installation. Le seul inconvénient est que vous aurez besoin d'une connexion Internet chaque fois que vous voudrez coder.">Vous ne pouvez pas installer la version de bureau? Pas de problème! Vous pouvez utiliser mBlock en ligne à ide.mblock.cc. Il fonctionne dans n'importe quel navigateur web et ne nécessite pas d'installation. Le seul inconvénient est que vous aurez besoin d'une connexion Internet chaque fois que vous voudrez coder.</p>
+
+            <div class="tip"><span class="tip-label"></span><span class="tip-content" data-en="The web version is perfect for Chromebooks or if you're using a shared/school computer where you can't install software." data-fr="La version web est parfaite pour les Chromebooks ou si vous utilisez un ordinateur partagé/scolaire où vous ne pouvez pas installer de logiciel.">La version web est parfaite pour les Chromebooks ou si vous utilisez un ordinateur partagé/scolaire où vous ne pouvez pas installer de logiciel.</span></div>
+        </div>
+    </div>
+
+    <div class="next-steps">
+        <h3 data-en="What's Next?" data-fr="Et ensuite?">Et ensuite?</h3>
+        <div class="next-links">
+            <a href="../basics/extensions.html" class="next-link" data-en="Install Device Extensions" data-fr="Installer les extensions d'appareil">Installer les extensions d'appareil</a>
+            <a href="../tutorials.html" class="next-link" data-en="Browse All Tutorials" data-fr="Parcourir tous les tutoriels">Parcourir tous les tutoriels</a>
+            <a href="../../forum/forum.html" class="next-link" data-en="Ask Questions in the Forum" data-fr="Posez des questions dans le forum">Posez des questions dans le forum</a>
+        </div>
+    </div>
+
+    <footer>
+        <p data-en="Made with ☕ by a student for students | Not officially affiliated with Makeblock or Place aux Robots" data-fr="Fait avec ☕ par un étudiant pour les étudiants | Non officieusement affilié à Makeblock ou Place aux Robots">Fait avec ☕ par un étudiant pour les étudiants | Non officieusement affilié à Makeblock ou Place aux Robots</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;"><span data-en="Found this helpful? Got stuck somewhere?" data-fr="Trouvé cela utile? Bloqué quelque part?">Trouvé cela utile? Bloqué quelque part?</span> <a href="../../forum/forum.html" style="color: #3498db;" data-en="Let me know!" data-fr="Faites-le moi savoir!">Faites-le moi savoir!</a></p>
+    </footer>
+
+
+    <script>
+        let currentLang = 'fr'; // Default to French
+
+        // Translation system
+        function setLanguage(lang, save = true) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            // Update text content
+            document.querySelectorAll('[data-en][data-fr]').forEach(el => {
+                el.textContent = el.dataset[lang];
+            });
+
+            // Update prefixes for tip/warning/note boxes
+            const tipLabels = document.querySelectorAll('.tip-label');
+            tipLabels.forEach(el => {
+                el.textContent = lang === 'en' ? '💡 Tip: ' : '💡 Conseil : ';
+            });
+
+            const warningLabels = document.querySelectorAll('.warning-label');
+            warningLabels.forEach(el => {
+                el.textContent = lang === 'en' ? '⚠️ Watch out: ' : '⚠️ Attention : ';
+            });
+
+            const noteLabels = document.querySelectorAll('.note-label');
+            noteLabels.forEach(el => {
+                el.textContent = lang === 'en' ? '📝 Note: ' : '📝 Note : ';
+            });
+
+            // Update content inside tip/warning/note boxes
+            document.querySelectorAll('.tip-content, .warning-content, .note-content').forEach(el => {
+                if (el.dataset[lang]) {
+                    el.textContent = el.dataset[lang];
+                }
+            });
+
+            // Update toggle button
+            const toggle = document.getElementById('langToggle');
+            if (toggle) toggle.textContent = lang === 'en' ? 'FR' : 'EN';
+
+            // Save language preference
+            if (save) localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Language toggle button
+        const langToggle = document.getElementById('langToggle');
+        if (langToggle) {
+            langToggle.addEventListener('click', () => {
+                const newLang = currentLang === 'en' ? 'fr' : 'en';
+                setLanguage(newLang);
+            });
+        }
+
+        // Initialize language from localStorage or default to French
+        const savedLang = localStorage.getItem('preferredLanguage') || 'fr';
+        
+        // Add labels to tip/warning/note boxes on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.tip').forEach(el => {
+                if (!el.querySelector('.tip-label')) {
+                    const label = document.createElement('span');
+                    label.className = 'tip-label';
+                    const content = document.createElement('span');
+                    content.className = 'tip-content';
+                    content.dataset.en = el.dataset.en || el.textContent;
+                    content.dataset.fr = el.dataset.fr || el.textContent;
+                    el.textContent = '';
+                    el.appendChild(label);
+                    el.appendChild(content);
+                }
+            });
+
+            document.querySelectorAll('.warning').forEach(el => {
+                if (!el.querySelector('.warning-label')) {
+                    const label = document.createElement('span');
+                    label.className = 'warning-label';
+                    const content = document.createElement('span');
+                    content.className = 'warning-content';
+                    content.dataset.en = el.dataset.en || el.textContent;
+                    content.dataset.fr = el.dataset.fr || el.textContent;
+                    el.textContent = '';
+                    el.appendChild(label);
+                    el.appendChild(content);
+                }
+            });
+
+            document.querySelectorAll('.note').forEach(el => {
+                if (!el.querySelector('.note-label')) {
+                    const label = document.createElement('span');
+                    label.className = 'note-label';
+                    const content = document.createElement('span');
+                    content.className = 'note-content';
+                    content.dataset.en = el.dataset.en || el.textContent;
+                    content.dataset.fr = el.dataset.fr || el.textContent;
+                    el.textContent = '';
+                    el.appendChild(label);
+                    el.appendChild(content);
+                }
+            });
+
+            setLanguage(savedLang, false);
+        });
+    </script>
+</body>
+</html>

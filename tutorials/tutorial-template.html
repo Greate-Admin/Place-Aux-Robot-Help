@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,8 +38,13 @@
             font-weight: 600;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
         nav a {
-            margin-left: 2rem;
             text-decoration: none;
             color: #5a6c7d;
             font-weight: 500;
@@ -48,6 +53,21 @@
 
         nav a:hover {
             color: #3498db;
+        }
+
+        .lang-toggle {
+            padding: 0.6rem 1rem;
+            background: #f0f0f0;
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #5a6c7d;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            background: #e8e8e8;
         }
 
         .breadcrumb {
@@ -204,21 +224,9 @@
             border-color: #22c55e;
         }
 
-        .tip::before {
-            content: "💡 Tip: ";
-            font-weight: bold;
-            color: #22c55e;
-        }
-
         .warning {
             background: #fef3e7;
             border-color: #f39c12;
-        }
-
-        .warning::before {
-            content: "⚠️ Watch out: ";
-            font-weight: bold;
-            color: #f39c12;
         }
 
         .note {
@@ -226,17 +234,11 @@
             border-color: #5a6c7d;
         }
 
-        .note::before {
-            content: "📝 Note: ";
-            font-weight: bold;
-            color: #5a6c7d;
-        }
-
         .image-placeholder {
             background: #e1e8ed;
             border: 2px dashed #a0aec0;
             border-radius: 8px;
-            padding: 3rem;
+            padding: 1rem;
             text-align: center;
             color: #5a6c7d;
             margin: 1.5rem 0;
@@ -317,96 +319,97 @@
         <div class="header-content">
             <h1>🤖 Place aux Robots</h1>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="tutorials.html">Tutorials</a>
-                <a href="forum.html">Forum</a>
+                <a href="index.html" data-en="Home" data-fr="Accueil">Accueil</a>
+                <a href="tutorials.html" data-en="Tutorials" data-fr="Tutoriels">Tutoriels</a>
+                <a href="forum.html" data-en="Forum" data-fr="Forum">Forum</a>
+                <button class="lang-toggle" id="langToggle">EN</button>
             </nav>
         </div>
     </header>
 
     <div class="breadcrumb">
-        <a href="index.html">Home</a> / <a href="category-sensors.html">Sensors</a> / Using the Ultrasonic Sensor
+        <a href="index.html" data-en="Home" data-fr="Accueil">Accueil</a> / <a href="category-sensors.html" data-en="Sensors" data-fr="Capteurs">Capteurs</a> / <span data-en="Using the Ultrasonic Sensor" data-fr="Utilisation du capteur ultrasonique">Utilisation du capteur ultrasonique</span>
     </div>
 
     <div class="tutorial-header">
-        <h2>Using the Ultrasonic Sensor</h2>
+        <h2 data-en="Using the Ultrasonic Sensor" data-fr="Utilisation du capteur ultrasonique">Utilisation du capteur ultrasonique</h2>
         <div class="tutorial-meta">
-            <span>⏱️ ~15 minutes</span>
-            <span>📊 Beginner</span>
-            <span>🔧 mCore required</span>
+            <span>⏱️ <span data-en="~15 minutes" data-fr="~15 minutes">~15 minutes</span></span>
+            <span>📊 <span data-en="Beginner" data-fr="Débutant">Débutant</span></span>
+            <span>🔧 <span data-en="mCore required" data-fr="mCore requis">mCore requis</span></span>
         </div>
     </div>
 
     <div class="what-you-learn">
-        <h3>What you'll learn</h3>
+        <h3 data-en="What you'll learn" data-fr="Ce que vous apprendrez">Ce que vous apprendrez</h3>
         <ul>
-            <li>How to connect the ultrasonic sensor to your mCore board</li>
-            <li>Which extension to use and how to add it</li>
-            <li>Reading distance values in your code</li>
-            <li>Making your robot avoid obstacles</li>
+            <li data-en="How to connect the ultrasonic sensor to your mCore board" data-fr="Comment connecter le capteur ultrasonique à votre carte mCore">Comment connecter le capteur ultrasonique à votre carte mCore</li>
+            <li data-en="Which extension to use and how to add it" data-fr="Quelle extension utiliser et comment l'ajouter">Quelle extension utiliser et comment l'ajouter</li>
+            <li data-en="Reading distance values in your code" data-fr="Lecture des valeurs de distance dans votre code">Lecture des valeurs de distance dans votre code</li>
+            <li data-en="Making your robot avoid obstacles" data-fr="Faire éviter les obstacles à votre robot">Faire éviter les obstacles à votre robot</li>
         </ul>
     </div>
 
     <div class="content">
         <div class="content-inner">
-            <h3>What is an Ultrasonic Sensor?</h3>
-            <p>The ultrasonic sensor is basically your robot's eyes. It shoots out sound waves (that humans can't hear) and measures how long they take to bounce back. From that, it figures out how far away things are.</p>
+            <h3 data-en="What is an Ultrasonic Sensor?" data-fr="Qu'est-ce qu'un capteur ultrasonique?">Qu'est-ce qu'un capteur ultrasonique?</h3>
+            <p data-en="The ultrasonic sensor is basically your robot's eyes. It shoots out sound waves (that humans can't hear) and measures how long they take to bounce back. From that, it figures out how far away things are." data-fr="Le capteur ultrasonique est essentiellement les yeux de votre robot. Il émet des ondes sonores (que les humains ne peuvent pas entendre) et mesure le temps qu'elles mettent à rebondir. À partir de cela, il détermine à quelle distance se trouvent les choses.">Le capteur ultrasonique est essentiellement les yeux de votre robot. Il émet des ondes sonores (que les humains ne peuvent pas entendre) et mesure le temps qu'elles mettent à rebondir. À partir de cela, il détermine à quelle distance se trouvent les choses.</p>
             
-            <p>Think of it like a bat's echolocation, but for robots. Pretty cool, right?</p>
+            <p data-en="Think of it like a bat's echolocation, but for robots. Pretty cool, right?" data-fr="Pensez-y comme l'écholocalisation d'une chauve-souris, mais pour les robots. Plutôt cool, non?">Pensez-y comme l'écholocalisation d'une chauve-souris, mais pour les robots. Plutôt cool, non?</p>
 
-            <div class="tip">The sensor works best between 3cm and 400cm. Any closer or farther and it might give you weird readings.</div>
+            <div class="tip"><span class="tip-label"></span><span class="tip-content" data-en="The sensor works best between 3cm and 400cm. Any closer or farther and it might give you weird readings." data-fr="Le capteur fonctionne mieux entre 3cm et 400cm. Plus près ou plus loin et il pourrait vous donner des lectures étranges.">Le capteur fonctionne mieux entre 3cm et 400cm. Plus près ou plus loin et il pourrait vous donner des lectures étranges.</span></div>
 
-            <h3>What You Need</h3>
+            <h3 data-en="What You Need" data-fr="Ce dont vous avez besoin">Ce dont vous avez besoin</h3>
             <ul>
-                <li>Your robot with mCore board</li>
-                <li>Ultrasonic sensor (the blue thing with two silver circles)</li>
-                <li>A cable to connect it (usually comes with the sensor)</li>
-                <li>mBlock software installed on your computer</li>
+                <li data-en="Your robot with mCore board" data-fr="Votre robot avec carte mCore">Votre robot avec carte mCore</li>
+                <li data-en="Ultrasonic sensor (the blue thing with two silver circles)" data-fr="Capteur ultrasonique (la chose bleue avec deux cercles argentés)">Capteur ultrasonique (la chose bleue avec deux cercles argentés)</li>
+                <li data-en="A cable to connect it (usually comes with the sensor)" data-fr="Un câble pour le connecter (généralement fourni avec le capteur)">Un câble pour le connecter (généralement fourni avec le capteur)</li>
+                <li data-en="mBlock software installed on your computer" data-fr="Logiciel mBlock installé sur votre ordinateur">Logiciel mBlock installé sur votre ordinateur</li>
             </ul>
 
-            <h3>Step-by-Step Setup</h3>
+            <h3 data-en="Step-by-Step Setup" data-fr="Configuration étape par étape">Configuration étape par étape</h3>
 
             <div class="step" data-step="1">
-                <h4>Connect the Sensor</h4>
-                <p>Grab your ultrasonic sensor and look for the ports on your mCore board. They're labeled and usually numbered. Connect your sensor to Port 3 or 4 - these are the ones that work with the ultrasonic sensor.</p>
-                <div class="image-placeholder">
-                    [Add image: Ultrasonic sensor connected to mCore Port 3]
+                <h4 data-en="Connect the Sensor" data-fr="Connecter le capteur">Connecter le capteur</h4>
+                <p data-en="Grab your ultrasonic sensor and look for the ports on your mCore board. They're labeled and usually numbered. Connect your sensor to Port 3 or 4 - these are the ones that work with the ultrasonic sensor." data-fr="Prenez votre capteur ultrasonique et cherchez les ports sur votre carte mCore. Ils sont étiquetés et généralement numérotés. Connectez votre capteur au port 3 ou 4 - ce sont ceux qui fonctionnent avec le capteur ultrasonique.">Prenez votre capteur ultrasonique et cherchez les ports sur votre carte mCore. Ils sont étiquetés et généralement numérotés. Connectez votre capteur au port 3 ou 4 - ce sont ceux qui fonctionnent avec le capteur ultrasonique.</p>
+                <div class="image-placeholder" data-en="[Add image: Ultrasonic sensor connected to mCore Port 3]" data-fr="[Ajouter image: Capteur ultrasonique connecté au port 3 du mCore]">
+                    [Ajouter image: Capteur ultrasonique connecté au port 3 du mCore]
                 </div>
-                <div class="warning">Make sure your robot is turned OFF when plugging things in. It's just safer that way.</div>
+                <div class="warning"><span class="warning-label"></span><span class="warning-content" data-en="Make sure your robot is turned OFF when plugging things in. It's just safer that way." data-fr="Assurez-vous que votre robot est ÉTEINT lorsque vous branchez des choses. C'est juste plus sûr comme ça.">Assurez-vous que votre robot est ÉTEINT lorsque vous branchez des choses. C'est juste plus sûr comme ça.</span></div>
             </div>
 
             <div class="step" data-step="2">
-                <h4>Open mBlock and Add the Extension</h4>
-                <p>Fire up mBlock on your computer. Look for the "Extensions" button at the bottom left - it looks like a puzzle piece or plus sign.</p>
-                <p>In the search bar, type "mBot" or "ultrasonic" and add the mBot extension. This gives you all the blocks you need to work with the sensor.</p>
-                <div class="image-placeholder">
-                    [Add image: Extensions menu in mBlock with mBot selected]
+                <h4 data-en="Open mBlock and Add the Extension" data-fr="Ouvrir mBlock et ajouter l'extension">Ouvrir mBlock et ajouter l'extension</h4>
+                <p data-en="Fire up mBlock on your computer. Look for the 'Extensions' button at the bottom left - it looks like a puzzle piece or plus sign." data-fr="Lancez mBlock sur votre ordinateur. Cherchez le bouton « Extensions » en bas à gauche - il ressemble à une pièce de puzzle ou un signe plus.">Lancez mBlock sur votre ordinateur. Cherchez le bouton « Extensions » en bas à gauche - il ressemble à une pièce de puzzle ou un signe plus.</p>
+                <p data-en="In the search bar, type 'mBot' or 'ultrasonic' and add the mBot extension. This gives you all the blocks you need to work with the sensor." data-fr="Dans la barre de recherche, tapez « mBot » ou « ultrasonic » et ajoutez l'extension mBot. Cela vous donne tous les blocs dont vous avez besoin pour travailler avec le capteur.">Dans la barre de recherche, tapez « mBot » ou « ultrasonic » et ajoutez l'extension mBot. Cela vous donne tous les blocs dont vous avez besoin pour travailler avec le capteur.</p>
+                <div class="image-placeholder" data-en="[Add image: Extensions menu in mBlock with mBot selected]" data-fr="[Ajouter image: Menu des extensions dans mBlock avec mBot sélectionné]">
+                    [Ajouter image: Menu des extensions dans mBlock avec mBot sélectionné]
                 </div>
             </div>
 
             <div class="step" data-step="3">
-                <h4>Find the Ultrasonic Block</h4>
-                <p>Once the extension is loaded, look in the blocks panel on the left. Under the "Sensors" category (usually blue or purple), you'll find a block that says something like:</p>
+                <h4 data-en="Find the Ultrasonic Block" data-fr="Trouver le bloc ultrasonique">Trouver le bloc ultrasonique</h4>
+                <p data-en="Once the extension is loaded, look in the blocks panel on the left. Under the 'Sensors' category (usually blue or purple), you'll find a block that says something like:" data-fr="Une fois l'extension chargée, regardez dans le panneau de blocs à gauche. Sous la catégorie « Capteurs » (généralement bleu ou violet), vous trouverez un bloc qui dit quelque chose comme:">Une fois l'extension chargée, regardez dans le panneau de blocs à gauche. Sous la catégorie « Capteurs » (généralement bleu ou violet), vous trouverez un bloc qui dit quelque chose comme:</p>
                 <div class="code-block">
                     ultrasonic sensor [port] distance
                 </div>
-                <p>This block returns a number - the distance in centimeters to whatever's in front of the sensor.</p>
+                <p data-en="This block returns a number - the distance in centimeters to whatever's in front of the sensor." data-fr="Ce bloc renvoie un nombre - la distance en centimètres à ce qui se trouve devant le capteur.">Ce bloc renvoie un nombre - la distance en centimètres à ce qui se trouve devant le capteur.</p>
             </div>
 
             <div class="step" data-step="4">
-                <h4>Write Your First Program</h4>
-                <p>Let's make something simple - a program that displays the distance on your screen. Here's what you need:</p>
+                <h4 data-en="Write Your First Program" data-fr="Écrire votre premier programme">Écrire votre premier programme</h4>
+                <p data-en="Let's make something simple - a program that displays the distance on your screen. Here's what you need:" data-fr="Faisons quelque chose de simple - un programme qui affiche la distance sur votre écran. Voici ce dont vous avez besoin:">Faisons quelque chose de simple - un programme qui affiche la distance sur votre écran. Voici ce dont vous avez besoin:</p>
                 <div class="code-block">
 when green flag clicked
 forever
     say (ultrasonic sensor [port 3] distance) for (1) seconds
                 </div>
-                <p>When you run this, your sprite will constantly tell you how far away the nearest object is. Wave your hand in front of the sensor and watch the numbers change!</p>
-                <div class="tip">Not seeing anything? Make sure you selected the right port number in the block (should match where you plugged it in).</div>
+                <p data-en="When you run this, your sprite will constantly tell you how far away the nearest object is. Wave your hand in front of the sensor and watch the numbers change!" data-fr="Lorsque vous exécutez ceci, votre sprite vous dira constamment à quelle distance se trouve l'objet le plus proche. Agitez votre main devant le capteur et regardez les nombres changer!">Lorsque vous exécutez ceci, votre sprite vous dira constamment à quelle distance se trouve l'objet le plus proche. Agitez votre main devant le capteur et regardez les nombres changer!</p>
+                <div class="tip"><span class="tip-label"></span><span class="tip-content" data-en="Not seeing anything? Make sure you selected the right port number in the block (should match where you plugged it in)." data-fr="Vous ne voyez rien? Assurez-vous d'avoir sélectionné le bon numéro de port dans le bloc (devrait correspondre à l'endroit où vous l'avez branché).">Vous ne voyez rien? Assurez-vous d'avoir sélectionné le bon numéro de port dans le bloc (devrait correspondre à l'endroit où vous l'avez branché).</span></div>
             </div>
 
-            <h3>Making Your Robot Avoid Obstacles</h3>
-            <p>Okay, now for the fun part - let's make your robot actually DO something with this sensor. Here's a basic obstacle avoidance setup:</p>
+            <h3 data-en="Making Your Robot Avoid Obstacles" data-fr="Faire éviter les obstacles à votre robot">Faire éviter les obstacles à votre robot</h3>
+            <p data-en="Okay, now for the fun part - let's make your robot actually DO something with this sensor. Here's a basic obstacle avoidance setup:" data-fr="D'accord, maintenant la partie amusante - faisons en sorte que votre robot fasse QUELQUE CHOSE avec ce capteur. Voici une configuration de base pour éviter les obstacles:">D'accord, maintenant la partie amusante - faisons en sorte que votre robot fasse QUELQUE CHOSE avec ce capteur. Voici une configuration de base pour éviter les obstacles:</p>
 
             <div class="code-block">
 when green flag clicked
@@ -416,57 +419,161 @@ forever
         turn right [90] degrees
     else
         move forward at speed [150]
-                </div>
+            </div>
 
-            <p>What this does: The robot moves forward normally, but if it gets within 20cm of something, it backs up and turns right to avoid it. Simple but effective!</p>
+            <p data-en="What this does: The robot moves forward normally, but if it gets within 20cm of something, it backs up and turns right to avoid it. Simple but effective!" data-fr="Ce que cela fait: Le robot avance normalement, mais s'il s'approche à moins de 20cm de quelque chose, il recule et tourne à droite pour l'éviter. Simple mais efficace!">Ce que cela fait: Le robot avance normalement, mais s'il s'approche à moins de 20cm de quelque chose, il recule et tourne à droite pour l'éviter. Simple mais efficace!</p>
 
-            <div class="note">Feel free to play with those numbers. Try different distances, different speeds, different turn angles. See what works best for your robot and your competition arena.</div>
+            <div class="note"><span class="note-label"></span><span class="note-content" data-en="Feel free to play with those numbers. Try different distances, different speeds, different turn angles. See what works best for your robot and your competition arena." data-fr="N'hésitez pas à jouer avec ces nombres. Essayez différentes distances, différentes vitesses, différents angles de virage. Voyez ce qui fonctionne le mieux pour votre robot et votre arène de compétition.">N'hésitez pas à jouer avec ces nombres. Essayez différentes distances, différentes vitesses, différents angles de virage. Voyez ce qui fonctionne le mieux pour votre robot et votre arène de compétition.</span></div>
 
-            <h3>Common Issues & How to Fix Them</h3>
+            <h3 data-en="Common Issues & How to Fix Them" data-fr="Problèmes courants et comment les résoudre">Problèmes courants et comment les résoudre</h3>
 
             <div class="common-issues">
-                <h4>Sensor not working / always returns 0 or 400</h4>
+                <h4 data-en="Sensor not working / always returns 0 or 400" data-fr="Le capteur ne fonctionne pas / renvoie toujours 0 ou 400">Le capteur ne fonctionne pas / renvoie toujours 0 ou 400</h4>
                 <ul>
-                    <li><strong>Check your connections</strong> - Is the cable plugged in all the way?</li>
-                    <li><strong>Port number</strong> - Make sure the port in your code matches the physical port</li>
-                    <li><strong>Try a different port</strong> - Sometimes ports can be finicky</li>
+                    <li><strong data-en="Check your connections" data-fr="Vérifiez vos connexions">Vérifiez vos connexions</strong> - <span data-en="Is the cable plugged in all the way?" data-fr="Le câble est-il bien branché?">Le câble est-il bien branché?</span></li>
+                    <li><strong data-en="Port number" data-fr="Numéro de port">Numéro de port</strong> - <span data-en="Make sure the port in your code matches the physical port" data-fr="Assurez-vous que le port dans votre code correspond au port physique">Assurez-vous que le port dans votre code correspond au port physique</span></li>
+                    <li><strong data-en="Try a different port" data-fr="Essayez un autre port">Essayez un autre port</strong> - <span data-en="Sometimes ports can be finicky" data-fr="Parfois, les ports peuvent être capricieux">Parfois, les ports peuvent être capricieux</span></li>
                 </ul>
             </div>
 
             <div class="common-issues">
-                <h4>Getting weird/jumpy readings</h4>
+                <h4 data-en="Getting weird/jumpy readings" data-fr="Obtention de lectures étranges/saccadées">Obtention de lectures étranges/saccadées</h4>
                 <ul>
-                    <li><strong>Add a small delay</strong> - Put a "wait 0.1 seconds" in your loop</li>
-                    <li><strong>Average multiple readings</strong> - Take 3 measurements and use the middle value</li>
-                    <li><strong>Check for obstacles</strong> - Loose wires or parts might be blocking the sensor</li>
+                    <li><strong data-en="Add a small delay" data-fr="Ajoutez un petit délai">Ajoutez un petit délai</strong> - <span data-en="Put a 'wait 0.1 seconds' in your loop" data-fr="Mettez un « attendre 0.1 seconde » dans votre boucle">Mettez un « attendre 0.1 seconde » dans votre boucle</span></li>
+                    <li><strong data-en="Average multiple readings" data-fr="Moyenne de plusieurs lectures">Moyenne de plusieurs lectures</strong> - <span data-en="Take 3 measurements and use the middle value" data-fr="Prenez 3 mesures et utilisez la valeur du milieu">Prenez 3 mesures et utilisez la valeur du milieu</span></li>
+                    <li><strong data-en="Check for obstacles" data-fr="Vérifiez les obstacles">Vérifiez les obstacles</strong> - <span data-en="Loose wires or parts might be blocking the sensor" data-fr="Des fils ou des pièces desserrés pourraient bloquer le capteur">Des fils ou des pièces desserrés pourraient bloquer le capteur</span></li>
                 </ul>
             </div>
 
-            <h3>Tips from Experience</h3>
-            <p>After using these sensors in a bunch of competitions, here's what I've learned:</p>
+            <h3 data-en="Tips from Experience" data-fr="Conseils d'expérience">Conseils d'expérience</h3>
+            <p data-en="After using these sensors in a bunch of competitions, here's what I've learned:" data-fr="Après avoir utilisé ces capteurs dans plusieurs compétitions, voici ce que j'ai appris:">Après avoir utilisé ces capteurs dans plusieurs compétitions, voici ce que j'ai appris:</p>
             <ul>
-                <li>The sensor has a cone-shaped detection area. It doesn't just see straight ahead - it sees a bit to the sides too. Keep that in mind when navigating tight spaces.</li>
-                <li>Shiny or angled surfaces can mess with the readings. The sound waves bounce off at weird angles.</li>
-                <li>Soft materials (like fabric or foam) absorb the sound waves. Your robot might think there's nothing there!</li>
-                <li>In competitions, test your robot on the actual arena surface if you can. Different floors can affect the sensor's accuracy.</li>
+                <li data-en="The sensor has a cone-shaped detection area. It doesn't just see straight ahead - it sees a bit to the sides too. Keep that in mind when navigating tight spaces." data-fr="Le capteur a une zone de détection en forme de cône. Il ne voit pas seulement droit devant - il voit aussi un peu sur les côtés. Gardez cela à l'esprit lors de la navigation dans des espaces restreints.">Le capteur a une zone de détection en forme de cône. Il ne voit pas seulement droit devant - il voit aussi un peu sur les côtés. Gardez cela à l'esprit lors de la navigation dans des espaces restreints.</li>
+                <li data-en="Shiny or angled surfaces can mess with the readings. The sound waves bounce off at weird angles." data-fr="Les surfaces brillantes ou inclinées peuvent perturber les lectures. Les ondes sonores rebondissent sous des angles étranges.">Les surfaces brillantes ou inclinées peuvent perturber les lectures. Les ondes sonores rebondissent sous des angles étranges.</li>
+                <li data-en="Soft materials (like fabric or foam) absorb the sound waves. Your robot might think there's nothing there!" data-fr="Les matériaux mous (comme le tissu ou la mousse) absorbent les ondes sonores. Votre robot pourrait penser qu'il n'y a rien là!">Les matériaux mous (comme le tissu ou la mousse) absorbent les ondes sonores. Votre robot pourrait penser qu'il n'y a rien là!</li>
+                <li data-en="In competitions, test your robot on the actual arena surface if you can. Different floors can affect the sensor's accuracy." data-fr="En compétition, testez votre robot sur la surface réelle de l'arène si vous le pouvez. Différents sols peuvent affecter la précision du capteur.">En compétition, testez votre robot sur la surface réelle de l'arène si vous le pouvez. Différents sols peuvent affecter la précision du capteur.</li>
             </ul>
 
-            <div class="tip">Want to get fancy? You can use two ultrasonic sensors (one on each side) to make your robot follow walls or navigate corridors. Just need two ports!</div>
+            <div class="tip"><span class="tip-label"></span><span class="tip-content" data-en="Want to get fancy? You can use two ultrasonic sensors (one on each side) to make your robot follow walls or navigate corridors. Just need two ports!" data-fr="Vous voulez faire quelque chose de sophistiqué? Vous pouvez utiliser deux capteurs ultrasoniques (un de chaque côté) pour que votre robot suive les murs ou navigue dans les corridors. Il vous faut juste deux ports!">Vous voulez faire quelque chose de sophistiqué? Vous pouvez utiliser deux capteurs ultrasoniques (un de chaque côté) pour que votre robot suive les murs ou navigue dans les corridors. Il vous faut juste deux ports!</span></div>
         </div>
     </div>
 
     <div class="next-steps">
-        <h3>What's Next?</h3>
+        <h3 data-en="What's Next?" data-fr="Et ensuite?">Et ensuite?</h3>
         <div class="next-links">
-            <a href="tutorial-line-follower.html" class="next-link">Try the Line Follower Sensor</a>
-            <a href="tutorial-motor-control.html" class="next-link">Learn Better Motor Control</a>
-            <a href="forum.html" class="next-link">Ask Questions in the Forum</a>
+            <a href="tutorial-line-follower.html" class="next-link" data-en="Try the Line Follower Sensor" data-fr="Essayez le capteur suiveur de ligne">Essayez le capteur suiveur de ligne</a>
+            <a href="tutorial-motor-control.html" class="next-link" data-en="Learn Better Motor Control" data-fr="Apprenez un meilleur contrôle moteur">Apprenez un meilleur contrôle moteur</a>
+            <a href="forum.html" class="next-link" data-en="Ask Questions in the Forum" data-fr="Posez des questions dans le forum">Posez des questions dans le forum</a>
         </div>
     </div>
 
     <footer>
-        <p>Made with ☕ by a student for students | Not officially affiliated with Makeblock or Place aux Robots</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Found this helpful? Got stuck somewhere? <a href="forum.html" style="color: #3498db;">Let me know!</a></p>
+        <p data-en="Made with ☕ by a student for students | Not officially affiliated with Makeblock or Place aux Robots" data-fr="Fait avec ☕ par un étudiant pour les étudiants | Non officieusement affilié à Makeblock ou Place aux Robots">Fait avec ☕ par un étudiant pour les étudiants | Non officieusement affilié à Makeblock ou Place aux Robots</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;"><span data-en="Found this helpful? Got stuck somewhere?" data-fr="Trouvé cela utile? Bloqué quelque part?">Trouvé cela utile? Bloqué quelque part?</span> <a href="forum.html" style="color: #3498db;" data-en="Let me know!" data-fr="Faites-le moi savoir!">Faites-le moi savoir!</a></p>
     </footer>
+
+    <script>
+        let currentLang = 'fr'; // Default to French
+
+        // Translation system
+        function setLanguage(lang, save = true) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            // Update text content
+            document.querySelectorAll('[data-en][data-fr]').forEach(el => {
+                el.textContent = el.dataset[lang];
+            });
+
+            // Update prefixes for tip/warning/note boxes
+            const tipLabels = document.querySelectorAll('.tip-label');
+            tipLabels.forEach(el => {
+                el.textContent = lang === 'en' ? '💡 Tip: ' : '💡 Conseil : ';
+            });
+
+            const warningLabels = document.querySelectorAll('.warning-label');
+            warningLabels.forEach(el => {
+                el.textContent = lang === 'en' ? '⚠️ Watch out: ' : '⚠️ Attention : ';
+            });
+
+            const noteLabels = document.querySelectorAll('.note-label');
+            noteLabels.forEach(el => {
+                el.textContent = lang === 'en' ? '📝 Note: ' : '📝 Note : ';
+            });
+
+            // Update content inside tip/warning/note boxes
+            document.querySelectorAll('.tip-content, .warning-content, .note-content').forEach(el => {
+                if (el.dataset[lang]) {
+                    el.textContent = el.dataset[lang];
+                }
+            });
+
+            // Update toggle button
+            const toggle = document.getElementById('langToggle');
+            if (toggle) toggle.textContent = lang === 'en' ? 'FR' : 'EN';
+
+            // Save language preference
+            if (save) localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Language toggle button
+        const langToggle = document.getElementById('langToggle');
+        if (langToggle) {
+            langToggle.addEventListener('click', () => {
+                const newLang = currentLang === 'en' ? 'fr' : 'en';
+                setLanguage(newLang);
+            });
+        }
+
+        // Initialize language from localStorage or default to French
+        const savedLang = localStorage.getItem('preferredLanguage') || 'fr';
+        
+        // Add labels to tip/warning/note boxes on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.tip').forEach(el => {
+                if (!el.querySelector('.tip-label')) {
+                    const label = document.createElement('span');
+                    label.className = 'tip-label';
+                    const content = document.createElement('span');
+                    content.className = 'tip-content';
+                    content.dataset.en = el.dataset.en || el.textContent;
+                    content.dataset.fr = el.dataset.fr || el.textContent;
+                    el.textContent = '';
+                    el.appendChild(label);
+                    el.appendChild(content);
+                }
+            });
+
+            document.querySelectorAll('.warning').forEach(el => {
+                if (!el.querySelector('.warning-label')) {
+                    const label = document.createElement('span');
+                    label.className = 'warning-label';
+                    const content = document.createElement('span');
+                    content.className = 'warning-content';
+                    content.dataset.en = el.dataset.en || el.textContent;
+                    content.dataset.fr = el.dataset.fr || el.textContent;
+                    el.textContent = '';
+                    el.appendChild(label);
+                    el.appendChild(content);
+                }
+            });
+
+            document.querySelectorAll('.note').forEach(el => {
+                if (!el.querySelector('.note-label')) {
+                    const label = document.createElement('span');
+                    label.className = 'note-label';
+                    const content = document.createElement('span');
+                    content.className = 'note-content';
+                    content.dataset.en = el.dataset.en || el.textContent;
+                    content.dataset.fr = el.dataset.fr || el.textContent;
+                    el.textContent = '';
+                    el.appendChild(label);
+                    el.appendChild(content);
+                }
+            });
+
+            setLanguage(savedLang, false);
+        });
+    </script>
 </body>
 </html>
